@@ -4,26 +4,43 @@
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
       <div class="logo" />
 
+
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
         <a-menu-item key="home" @click="$router.push('/home')">
-            <a-icon type="from" />
+            <a-icon type="home" />
             <span>首页</span>
         </a-menu-item>
 
 
-        <a-sub-menu key="sub1">
-          <span slot="title"><a-icon type="user" />From</span>
+        <a-sub-menu key="form">
+          <span slot="title"><a-icon type="form" /><span>From表单</span></span>
           <a-menu-item key="from1" @click="$router.push('/from1')">
-            <a-icon type="from" />
             <span>from1</span>
           </a-menu-item>
 
           <a-menu-item key="from2" @click="$router.push('/from2')">
-            <a-icon type="from" />
             <span>from2</span>
           </a-menu-item>
-
         </a-sub-menu>
+
+
+        <a-sub-menu key="table">
+          <span slot="title"><a-icon type="table" /><span>Table表格</span></span>
+          <a-menu-item key="table1" @click="$router.push('/table1')">
+            <span>table1</span>
+          </a-menu-item>
+
+          <a-menu-item key="table2" @click="$router.push('/table2')">
+            <span>from2</span>
+          </a-menu-item>
+        </a-sub-menu>
+
+
+
+
+
+
+
       </a-menu>
 
     </a-layout-sider>
