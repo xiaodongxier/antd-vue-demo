@@ -7,7 +7,7 @@
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
         <a-menu-item key="home" @click="$router.push('/home')">
             <a-icon type="from" />
-            <span>home</span>
+            <span>首页</span>
         </a-menu-item>
 
 
