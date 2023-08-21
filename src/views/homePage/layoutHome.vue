@@ -6,12 +6,21 @@
 
 
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
-        <a-menu-item key="home" @click="$router.push('/home')">
+
+
+        <a-menu-item :key="item.name" @click="$router.push(item.path)" v-for="item in menuDate">
             <a-icon type="home" />
-            <span>首页</span>
+            <span>{{item.name}}</span>
         </a-menu-item>
 
+        <!-- <a-menu-item key="home" @click="$router.push('/home')">
+            <a-icon type="home" />
+            <span>首页</span>
+        </a-menu-item> -->
 
+
+
+<!-- 
         <a-sub-menu key="form">
           <span slot="title"><a-icon type="form" /><span>From表单</span></span>
           <a-menu-item key="from1" @click="$router.push('/from1')">
@@ -37,6 +46,18 @@
 
 
 
+        <a-sub-menu key="card">
+          <span slot="title"><a-icon type="edit" /><span>Card卡片</span></span>
+          <a-menu-item key="card1" @click="$router.push('/card1')">
+            <span>card1</span>
+          </a-menu-item>
+
+          <a-menu-item key="card2" @click="$router.push('/card2')">
+            <span>from2</span>
+          </a-menu-item>
+        </a-sub-menu> -->
+
+
 
 
 
@@ -56,32 +77,13 @@
   </a-layout>
 </template>
 <script>
+// import '../../router/index'
+import router from '../../router/index';
 export default {
   data() {
     return {
       collapsed: false,
-      // menuDate: [
-      //   {
-      //   path: '/',
-      //   name: '首页',
-      //   label: '首页',
-      //   icon: 'home',
-      //   url: 'Home/Home'
-      // },
-      // {
-      //   path: '/from1',
-      //   name: 'from1',
-      //   label: '商品管理',
-      //   icon: 'table',
-      //   url: 'MallManage/MallManage'
-      // },
-      // {
-      //   path: '/from2',
-      //   name: 'from2',
-      //   label: '用户管理',
-      //   icon: 'user',
-      //   url: 'UserManage/UserManage',
-      // }]
+      menuDate: [],
     };
   },
   methods: {
@@ -90,6 +92,14 @@ export default {
     //   console.log(item.path, this.$route.path)
     //   this.$router.push(item.path)
     // }
+  },
+  mounted(){
+    var allMenu = router.options.routes[0].children;
+    // var newMeun = allMenu.filter(function(item, index) {
+    //   return index>0
+    // })
+    this.menuDate = allMenu;
+
   }
 };
 </script>

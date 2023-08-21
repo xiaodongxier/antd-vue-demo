@@ -1,7 +1,6 @@
 <template>
   <a-table :columns="columns" :data-source="data">
-    <a slot="name" slot-scope="text">{{ text }}</a>
-    <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
+    <span slot="customTitle" ><a-icon type="smile-o" /> Name</span>
     <span slot="tags" slot-scope="tags">
       <a-tag
         v-for="tag in tags"
@@ -26,7 +25,6 @@ const columns = [
     dataIndex: 'name',
     key: 'name',
     slots: { title: 'customTitle' },
-    scopedSlots: { customRender: 'name' },
   },
   {
     title: 'Age',
