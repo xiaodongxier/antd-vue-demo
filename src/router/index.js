@@ -12,6 +12,7 @@ import table2 from '../views/homePage/table/table2.vue'
 import card1 from '../views/homePage/card/card1.vue'
 import card2 from '../views/homePage/card/card2.vue'
 import menu1 from '../views/homePage/menu/menu1.vue'
+import guolvqi1 from '../views/homePage/过滤器/过滤器1.vue'
 
 const routes = [
   {
@@ -53,6 +54,10 @@ const routes = [
         path: "/menu1",
         name: 'menu1',
         component: menu1
+      }, {
+        path: "/guolvqi1",
+        name: '过滤器',
+        component: guolvqi1
       }
     ]
   }
