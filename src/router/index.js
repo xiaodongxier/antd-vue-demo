@@ -13,6 +13,8 @@ import card1 from '../views/homePage/card/card1.vue'
 import card2 from '../views/homePage/card/card2.vue'
 import menu1 from '../views/homePage/menu/menu1.vue'
 import guolvqi1 from '../views/homePage/过滤器/过滤器1.vue'
+import alist1 from '../views/homePage/alist/alist1.vue'
+import Select1 from '../views/homePage/Select/Select1.vue'
 
 const routes = [
   {
@@ -58,6 +60,14 @@ const routes = [
         path: "/guolvqi1",
         name: '过滤器',
         component: guolvqi1
+      }, {
+        path: "/alist1",
+        name: 'alist页面',
+        component: alist1
+      }, {
+        path: "/Select1",
+        name: 'Select 选择器',
+        component: Select1
       }
     ]
   }
