@@ -1,5 +1,8 @@
 # antd-vue-demo
 
+> npm run push 进行编译发布
+
+
 ## Project setup
 ```
 yarn install

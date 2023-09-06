@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "push": "vue-cli-service build && git status && git add . && git commit -m '通过npm run git进行发布更新' && git push"
+    "push": "vue-cli-service build && git status && git add . && git commit -m '通过npm run push进行发布更新' && git push"
   },
   "dependencies": {
     "ant-design-vue": "1.7.8",
