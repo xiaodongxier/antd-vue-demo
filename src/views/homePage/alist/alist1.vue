@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2023-08-24 22:22:46
+ * @LastEditTime: 2023-08-25 16:04:57
+ * @Author: bytz_user
+ * @Note:  
+-->
 <template>
   <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: 3 }" :data-source="data" :pagination="pagination" >
     <a-list-item slot="renderItem" slot-scope="item">
@@ -8,43 +14,10 @@
   </a-list>
 </template>
 <script>
-const data = [
-{
-    title: 'Title 1',
-  },
-  {
-    title: 'Title 2',
-  },
-  {
-    title: 'Title 3',
-  },
-  {
-    title: 'Title 4',
-  },
-  {
-    title: 'Title 5',
-  },
-  {
-    title: 'Title 6',
-  }, {
-    title: 'Title 1',
-  },
-  {
-    title: 'Title 2',
-  },
-  {
-    title: 'Title 3',
-  },
-  {
-    title: 'Title 4',
-  },
-  {
-    title: 'Title 5',
-  },
-  {
-    title: 'Title 6',
-  },
-];
+const data = [];
+for(let item = 0; item<=150; item++) {
+  data.push({title: `Item ${item}`,})
+}
 
 export default {
   data() {
@@ -67,7 +40,6 @@ export default {
         },
         // 是否可以快速跳转至某页
           showQuickJumper: true,
-
           // 显示下拉设置每页数量
           showSizeChanger: true,
           // 和上面showSizeChanger配合使用,pageSize存在的时候此无效

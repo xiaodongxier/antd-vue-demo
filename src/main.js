@@ -6,6 +6,8 @@ import 'ant-design-vue/dist/antd.css';
 
 import VueRouter from 'vue-router'
 
+import Moment from 'moment'//导入文件
+Vue.prototype.$moment = Moment;//赋值使用
 
 Vue.config.productionTip = false
 

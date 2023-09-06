@@ -1,3 +1,9 @@
+/*
+ * @Date: 2023-08-13 16:02:54
+ * @LastEditTime: 2023-08-25 11:11:02
+ * @Author: bytz_user
+ * @Note:  
+ */
 // 引入路由
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -15,6 +21,8 @@ import menu1 from '../views/homePage/menu/menu1.vue'
 import guolvqi1 from '../views/homePage/过滤器/过滤器1.vue'
 import alist1 from '../views/homePage/alist/alist1.vue'
 import Select1 from '../views/homePage/Select/Select1.vue'
+import Layout1 from '../views/homePage/Layout/Layout1.vue'
+import Moment1 from '../views/homePage/Moment/Moment1.vue'
 
 const routes = [
   {
@@ -68,6 +76,14 @@ const routes = [
         path: "/Select1",
         name: 'Select 选择器',
         component: Select1
+      }, {
+        path: "/Layout1",
+        name: 'Layout1',
+        component: Layout1
+      },{
+        path: "/Moment1",
+        name: 'Moment1',
+        component: Moment1
       }
     ]
   }
