@@ -13,16 +13,12 @@ Vue.use(VueRouter)
 import layoutHome from '../views/homePage/layoutHome.vue'
 import home from '../views/homePage/home.vue'
 import from1 from '../views/homePage/from/from1.vue'
-import table1 from '../views/homePage/table/table1.vue'
-import table2 from '../views/homePage/table/table2.vue'
-import card1 from '../views/homePage/card/card1.vue'
-import card2 from '../views/homePage/card/card2.vue'
-import menu1 from '../views/homePage/menu/menu1.vue'
 import guolvqi1 from '../views/homePage/过滤器/过滤器1.vue'
 import alist1 from '../views/homePage/alist/alist1.vue'
 import Select1 from '../views/homePage/Select/Select1.vue'
-import Layout1 from '../views/homePage/Layout/Layout1.vue'
 import Moment1 from '../views/homePage/Moment/Moment1.vue'
+
+import test from '../views/homePage/test/test.vue'
 
 const routes = [
   {
@@ -37,33 +33,8 @@ const routes = [
       },
       {
         path: "/from1",
-        name: '基础表单',
+        name: 'antd之form表单',
         component: from1
-      },
-      {
-        path: "/table1",
-        name: 'table1',
-        component: table1
-      },
-      {
-        path: "/table2",
-        name: 'table2',
-        component: table2
-      },
-      {
-        path: "/card1",
-        name: 'card1',
-        component: card1
-      },
-      {
-        path: "/card2",
-        name: 'card2',
-        component: card2
-      },
-      {
-        path: "/menu1",
-        name: 'menu1',
-        component: menu1
       }, {
         path: "/guolvqi1",
         name: '过滤器',
@@ -76,14 +47,14 @@ const routes = [
         path: "/Select1",
         name: 'Select 选择器',
         component: Select1
-      }, {
-        path: "/Layout1",
-        name: 'Layout1',
-        component: Layout1
       },{
         path: "/Moment1",
-        name: 'Moment1',
+        name: '时间处理库Moment',
         component: Moment1
+      },{
+        path: "/test",
+        name: '练习草稿纸',
+        component: test
       }
     ]
   }

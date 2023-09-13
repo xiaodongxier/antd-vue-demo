@@ -1,3 +1,52 @@
+<!-- <template>
+  <div>
+    <a-form  :label-col="{span:5}" :wrapperCol="{span:5}">
+      <a-form-item label="姓名" >
+        <a-input v-model="form.name"></a-input>
+      </a-form-item>
+      <a-form-item label="姓名">
+        <a-input v-model="form.name" disabled></a-input>
+      </a-form-item>
+
+      <a-form-item type="">
+        <a-button @click="btnClick">提交</a-button>
+      </a-form-item>
+    </a-form>
+
+
+
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'test',
+  data() {
+    return { 
+      form: {
+        name: ""
+      }
+    }
+  },
+  methods: {
+    btnClick(){
+      console.log("btnClic")
+      console.log("btnClic", this.form)
+    }
+  }
+}
+</script>
+<style lang="" scoped>
+  
+  
+  
+  
+</style> -->
+
+
+
+
+
 <template>
   <div>
     <a-form :form="myLogin" @submit="handleSubmit" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }" >
@@ -25,6 +74,11 @@
          -->
         <a-input v-decorator="['sex', rules.sex]" />
       </a-form-item>
+      <a-form-item label="时间">
+        <a-date-picker v-decorator="['reactorStopTime', rules.reactorStopTime]" format="YYYY-MM-DD"/>
+      </a-form-item>
+      
+
 
       <a-form-item>
         <a-button html-type="submit" type="primary">
@@ -79,7 +133,8 @@ export default {
         sex: { 
           rules: [{ required: true, message: "不能为空" }], 
           initialValue: "男" 
-        }
+        },
+        reactorStopTime: { rules: [{ required: true, message: "日期不能为空" }] },
       }
     };
   },
