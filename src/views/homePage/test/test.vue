@@ -1,70 +1,113 @@
 <template>
   <div>
-    <input type="text" v-model="title">
-    <pre>
-      beforeCreate 获取不到data里面的数据和methods里面的方法
-      ----
-      created 可以获取到data里面的数据和methods里面的方法
-      beforeMount 可以获取到data里面的数据和methods里面的方法
-      mounted 可以获取到data里面的数据和methods里面的方法
-      beforeUpdate 可以获取到data里面的数据和methods里面的方法
-      updated 可以获取到data里面的数据和methods里面的方法
-      ----
-      
-    </pre>
+    <div ref="codeContainer" class="coder-editor"></div>
+    <div>
+      {{ getValue() }}
+    </div>
   </div>
 </template>
 
 <script>
+import * as monaco from 'monaco-editor';
 export default {
-  name: 'test',
+  
   data() {
     return {
-      description: '项目信息',
-      title: "访问到了data数据"
+      monacoEditor: null, // 语言编辑器
     }
   },
-  beforeCreate() {
-    console.log("beforeCreate", this.title)
-    // this.getData("beforeCreate")
-  },
-  created() {
-    console.log("created", this.title)
-    this.getData("created")
-  },
-  beforeMount() {
-    console.log("beforeMount", this.title)
-    this.getData("beforeMount")
-  },
-  mounted() {
-    console.log("mounted", this.title)
-    this.getData("mounted")
-  },
-  beforeUpdate() {
-    console.log("beforeUpdate", this.title)
-    this.getData("beforeUpdate")
-  },
-  updated() {
-    console.log("updated", this.title)
-    this.getData("updated")
+  mounted(){
+    this.init()
+
+    // 获取选中内容 start
+    const model = this.monacoEditor.getModel();
+    const selection = this.monacoEditor.getSelection();
+    const selectedText = model.getValueInRange(selection);
+
+    console.log(selectedText);
+
+    // 在划选过程中打印选中的值
+    this.monacoEditor.onDidChangeCursorSelection(() => {
+        let select = this.monacoEditor.getSelection();
+        console.log(model.getValueInRange(select));
+    });
+    // 获取选中内容 end
   },
   beforeDestroy() {
-    console.log("beforeDestroy", this.title)
-  },
-  destroyed() {
-    console.log("destroyed", this.title)
+      this.monacoEditor.dispose();
   },
   methods: {
-    getData(cycle){
-      console.error(cycle + "生命周期钩子获取到methods方法")
-      return this.title
+    init(){
+      let myData = `
+        { 
+          key: "11",
+          order: "001",
+          pactCode: "N001",
+          insideCode: "B001",
+          fileName: "文件名称1",
+          editName: "张山",
+          checkName: "李四",
+          auditName: "李四",
+          ratifyName: "六六",
+          time: "2023-01-01"
+        },
+        { 
+          key: "11";
+          order: "001";
+          pactCode: "N001";
+          insideCode: "B001";
+          fileName: "文件名称1";
+          editName: "张山";
+          checkName: "李四";
+          auditName: "李四";
+          ratifyName: "六六";
+          time: "2023-01-01"
+        }
+        `
+        ;
+      if(this.$refs.codeContainer){
+        // 初始化编辑器，确保dom已经渲染
+        this.monacoEditor = monaco.editor.create(this.$refs.codeContainer, {
+          value: myData, // 编辑器初始显示文字
+          language: 'javascript', // 语言 javascript | json
+          automaticLayout: true, // 自动布局
+          theme: 'vs', // 官方自带三种主题 vs, hc-black, or vs-dark
+          foldingStrategy: 'indentation', // 代码可分小段折叠
+          overviewRulerBorder: false, // 不要滚动条的边框
+          lineNumbers: 'on', // 控制行号的出现 on | off
+          scrollbar: { // 滚动条设置
+            verticalScrollbarSize: 4, // 竖滚动条
+            horizontalScrollbarSize: 6, // 横滚动条
+          },
+          readOnly: false, // 是否只读 Defaults to false | true
+          minimap: { // 关闭小地图
+            // autohide: true,   //控制minimap的渲染方式,意思为自动隐藏，当设置为false时，没有效果一≠≠≠直可见，设置为true时，默认不可见，鼠标悬浮时可见
+            enabled: true, //一个布尔值，指示是否启用缩略图。默认为 true
+            scale: 2, //字体的放大倍数，默认是1
+          },
+          cursorStyle: 'line', // 光标样式
+          fontSize: 14, // 字体大小
+          tabSize: 2, // tab缩进长度
+          autoIndent: true, // 自动布局
+          hover: {
+            enabled: true,
+            delay: 500,
+          },
+        });
+      }
+    },
+    getValue(){
+      // setInterval(() => {
+      //   console.log(this.monacoEditor)
+      // }, 1000);
     }
-  }
-}
+}}
 </script>
-<style lang="" scoped>
-  
-  
-  
-  
+
+<style lang="less" scoped>
+.coder-editor{
+  width: 100%;
+  height: 80vh;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
 </style>
