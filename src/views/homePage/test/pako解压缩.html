@@ -1,0 +1,28 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <meta charset="UTF-8">  
+  <title>Pako Example</title>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/1.0.11/pako.min.js"></script>  
+</head>  
+<body>  
+  <textarea id="input" rows="10" cols="50"></textarea>  
+  <button onclick="compress()">Compress</button>  
+  <button onclick="decompress()">Decompress</button>  
+  <textarea id="output" rows="10" cols="50"></textarea>  
+  
+  <script>  
+    function compress() {  
+      const input = document.getElementById('input').value;  
+      const compressedData = pako.gzip(input, { to: 'string' });  
+      document.getElementById('output').value = compressedData;  
+    }  
+  
+    function decompress() {  
+      const compressedData = document.getElementById('output').value;  
+      const binaryData = pako.ungzip(compressedData, { to: 'string' });  
+      document.getElementById('input').value = binaryData;  
+    }  
+  </script>
+</body>  
+</html>

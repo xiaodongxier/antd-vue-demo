@@ -53,7 +53,7 @@ const routes = [
         component: Moment1
       },{
         path: "/test",
-        name: '练习草稿纸',
+        name: '王永杰练习场',
         component: test
       }
     ]

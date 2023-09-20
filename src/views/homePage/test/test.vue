@@ -1,9 +1,13 @@
 <template>
   <div>
+    <upload :before-upload="handleFileUpload">
+      <button slot="trigger">
+        点击上传文件
+      </button>
+    </upload>
     <div ref="codeContainer" class="coder-editor"></div>
-    <div>
-      {{ getValue() }}
-    </div>
+    <div v-html="content"></div>
+    <div ref="monacoContainer"></div>
   </div>
 </template>
 
@@ -13,32 +17,9 @@ export default {
   
   data() {
     return {
-      monacoEditor: null, // 语言编辑器
-    }
-  },
-  mounted(){
-    this.init()
-
-    // 获取选中内容 start
-    const model = this.monacoEditor.getModel();
-    const selection = this.monacoEditor.getSelection();
-    const selectedText = model.getValueInRange(selection);
-
-    console.log(selectedText);
-
-    // 在划选过程中打印选中的值
-    this.monacoEditor.onDidChangeCursorSelection(() => {
-        let select = this.monacoEditor.getSelection();
-        console.log(model.getValueInRange(select));
-    });
-    // 获取选中内容 end
-  },
-  beforeDestroy() {
-      this.monacoEditor.dispose();
-  },
-  methods: {
-    init(){
-      let myData = `
+      monacoEditor: null, // 语言编辑器,
+      content: '',
+      myData: `
         { 
           key: "11",
           order: "001",
@@ -64,11 +45,46 @@ export default {
           time: "2023-01-01"
         }
         `
-        ;
+    }
+  },
+  mounted(){
+    this.init()
+
+    // 获取选中内容 start
+    const model = this.monacoEditor.getModel();
+    const selection = this.monacoEditor.getSelection();
+    const selectedText = model.getValueInRange(selection);
+
+    console.log(selectedText);
+
+    // 在划选过程中打印选中的值
+    this.monacoEditor.onDidChangeCursorSelection(() => {
+        let select = this.monacoEditor.getSelection();
+        console.log(model.getValueInRange(select));
+    });
+    // 获取选中内容 end
+
+    // 高亮
+    // const text = 'function add(a, b) { return a + b; }';
+    monaco.editor.colorize(this.myData, 'javascript', {
+        tabSize: 4 
+    }).then((html) => {
+      document.write(html)
+        console.log(html);
+        this.content = html;
+    });
+    // 支持高亮的语言
+    console.log(monaco.languages.getLanguages())
+  },
+  beforeDestroy() {
+      this.monacoEditor.dispose();
+  },
+  methods: {
+    init(){
       if(this.$refs.codeContainer){
         // 初始化编辑器，确保dom已经渲染
         this.monacoEditor = monaco.editor.create(this.$refs.codeContainer, {
-          value: myData, // 编辑器初始显示文字
+          value: this.myData, // 编辑器初始显示文字
           language: 'javascript', // 语言 javascript | json
           automaticLayout: true, // 自动布局
           theme: 'vs', // 官方自带三种主题 vs, hc-black, or vs-dark
@@ -95,11 +111,6 @@ export default {
           },
         });
       }
-    },
-    getValue(){
-      // setInterval(() => {
-      //   console.log(this.monacoEditor)
-      // }, 1000);
     }
 }}
 </script>
@@ -107,7 +118,7 @@ export default {
 <style lang="less" scoped>
 .coder-editor{
   width: 100%;
-  height: 80vh;
+  height: 40vh;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 </style>
