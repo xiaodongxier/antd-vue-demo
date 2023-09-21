@@ -17,6 +17,9 @@ import guolvqi1 from '../views/homePage/过滤器/过滤器1.vue'
 import alist1 from '../views/homePage/alist/alist1.vue'
 import Select1 from '../views/homePage/Select/Select1.vue'
 import Moment1 from '../views/homePage/Moment/Moment1.vue'
+import editor1 from '../views/homePage/editor/editor1.vue'
+import editor2 from '../views/homePage/editor/editor2.vue'
+import editor3 from '../views/homePage/editor/editor3.vue'
 
 import test from '../views/homePage/test/test.vue'
 
@@ -51,6 +54,18 @@ const routes = [
         path: "/Moment1",
         name: '时间处理库Moment',
         component: Moment1
+      },{
+        path: "/editor1",
+        name: '★编辑页面',
+        component: editor1
+      },{
+        path: "/editor2",
+        name: '★审核页面/批注/对比',
+        component: editor2
+      },{
+        path: "/editor3",
+        name: '★回显/在编辑',
+        component: editor3
       },{
         path: "/test",
         name: '王永杰练习场',
